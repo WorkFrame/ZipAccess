@@ -1,0 +1,89 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="12.0" InitialTargets="ValidateAssemblyRoot" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Target Name="ValidateAssemblyRoot">
+    <Error Text="'Vishnu_Root' or 'Assemblies' must be set to a valid directory-path through environment or command line." Condition="'$(Vishnu_Root)$(Vishnu_Assemblies)' == ''" />
+    <Error Text="Couldn't find a valid assembly directory." Condition="!Exists('$(Vishnu_Assemblies)') and !Exists('$(Vishnu_Root)/ReadyBin/Assemblies')" />
+  </Target>
+  <PropertyGroup>
+    <AssemblyRoot Condition="'$(Vishnu_Assemblies)'!=''">$(Vishnu_Assemblies)</AssemblyRoot>
+  </PropertyGroup>
+  <PropertyGroup>
+    <AssemblyRoot Condition="'$(Vishnu_Assemblies)'==''">$(Vishnu_Root)/ReadyBin/Assemblies</AssemblyRoot>
+  </PropertyGroup>
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>8.0.30703</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{16F51C9F-38CF-4E5D-9D51-12A53111A7E0}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>NetEti.FileTools.Zip</RootNamespace>
+    <AssemblyName>NetEti.ZipAccess</AssemblyName>
+    <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <TargetFrameworkProfile />
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <DocumentationFile>bin\Debug\NetEti.ZipAccess.xml</DocumentationFile>
+    <Prefer32Bit>false</Prefer32Bit>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <Prefer32Bit>false</Prefer32Bit>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="ICSharpCode.SharpZipLib, Version=2.0.0.1, Culture=neutral, PublicKeyToken=0632af5f2e8db57f, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>Assemblies\ICSharpCode.SharpZipLib.dll</HintPath>
+    </Reference>
+    <Reference Include="NetEti.Global">
+      <HintPath>$(AssemblyRoot)\NetEti.Global.dll</HintPath>
+    </Reference>
+    <Reference Include="SevenZipSharp">
+      <HintPath>Assemblies\SevenZipSharp.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.IO.Compression" />
+    <Reference Include="System.IO.Compression.FileSystem" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="ZipAccess.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="7z32.dll">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="7z64.dll">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Assemblies\ICSharpCode.SharpZipLib.dll" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>
