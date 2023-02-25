@@ -75,13 +75,6 @@ namespace NetEti.DemoApplications
                 {
                     this._zipAccessor.UnZipArchiveFiles(this.tbxFilePath.Text, tbxDirPath.Text, "", false, filePathes);
                 }
-                // Test2
-                filePathes = this._zipAccessor.GetZipEntryFilePathes(this._zipAccessor
-                  .GetZipEntryList(this.tbxFilePath.Text, null)).Where(p => p.EndsWith("00800377.TIF")).ToArray();
-                if (filePathes.Length > 0)
-                {
-                    this._zipAccessor.UnZipArchiveFiles(this.tbxFilePath.Text, tbxDirPath.Text, "", false, filePathes);
-                }
             }
             catch (Exception ex)
             {
