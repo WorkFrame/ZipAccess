@@ -4,7 +4,6 @@ using System.Windows.Forms;
 using NetEti.FileTools.Zip;
 using System.Collections.Generic;
 using System.Linq;
-using System.IO;
 
 namespace NetEti.DemoApplications
 {
@@ -70,17 +69,18 @@ namespace NetEti.DemoApplications
             try
             {
                 // Test1
-                string[] filePathes = StaticZipHelpers.GetZipEntryFilePathes(this._zipAccessor
-                  .GetZipEntryList(this.tbxFilePath.Text, null)).Where(p => p.EndsWith("obj")).ToArray();
-                // Test2
-                if (filePathes.Length < 1)
-                {
-                    filePathes = StaticZipHelpers.GetZipEntryFilePathes(this._zipAccessor
-                      .GetZipEntryList(this.tbxFilePath.Text, null)).Where(p => p.StartsWith("Zip")).ToArray();
-                }
+                string[] filePathes = this._zipAccessor.GetZipEntryFilePathes(this._zipAccessor
+                  .GetZipEntryList(this.tbxFilePath.Text, null)).Where(p => p.StartsWith("obj")).ToArray();
                 if (filePathes.Length > 0)
                 {
-                    this._zipAccessor.UnZipArchive(this.tbxFilePath.Text, tbxDirPath.Text, "", false);
+                    this._zipAccessor.UnZipArchiveFiles(this.tbxFilePath.Text, tbxDirPath.Text, "", false, filePathes);
+                }
+                // Test2
+                filePathes = this._zipAccessor.GetZipEntryFilePathes(this._zipAccessor
+                  .GetZipEntryList(this.tbxFilePath.Text, null)).Where(p => p.EndsWith("00800377.TIF")).ToArray();
+                if (filePathes.Length > 0)
+                {
+                    this._zipAccessor.UnZipArchiveFiles(this.tbxFilePath.Text, tbxDirPath.Text, "", false, filePathes);
                 }
             }
             catch (Exception ex)
@@ -125,12 +125,10 @@ namespace NetEti.DemoApplications
 
         private void btnChooseDir_Click(object sender, EventArgs e)
         {
-            string rootPath = Path.GetDirectoryName(System.Reflection.Assembly.GetEntryAssembly()?.Location) ?? "";
-            string? apendix = this.tbxDirPath.Text.Replace(rootPath, "");
-            this.folderBrowserDialog1.SelectedPath = Path.Combine(rootPath, apendix);
+            this.folderBrowserDialog1.SelectedPath = this.tbxDirPath.Text;
             if (this.folderBrowserDialog1.ShowDialog() == DialogResult.OK)
             {
-                this.tbxDirPath.Text = this.folderBrowserDialog1.SelectedPath.Replace(rootPath, "").TrimStart('\\');
+                this.tbxDirPath.Text = this.folderBrowserDialog1.SelectedPath;
             }
         }
 
@@ -146,7 +144,7 @@ namespace NetEti.DemoApplications
             }
         }
 
-        private void ShowZipProgress(object? sender, ProgressChangedEventArgs args)
+        private void ShowZipProgress(object sender, ProgressChangedEventArgs args)
         {
             if (this._canceled)
             {
@@ -155,7 +153,7 @@ namespace NetEti.DemoApplications
             this.OnUpdateInfos(args);
         }
 
-        private void ShowZipProgressFinished(object? sender, ProgressChangedEventArgs args)
+        private void ShowZipProgressFinished(object sender, ProgressChangedEventArgs args)
         {
             this.OnUpdateInfos(args);
         }
