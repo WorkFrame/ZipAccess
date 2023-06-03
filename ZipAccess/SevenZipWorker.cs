@@ -157,7 +157,7 @@ namespace NetEti.FileTools.Zip
         /// <param name="outputFolder">Wohin entpackt werden soll</param>
         /// <param name="password">Passwort oder null</param>
         /// <param name="deleteZipFile">ob das Archiv hinterher gelöscht werden soll</param>
-        public void UnZipArchive(string zipPathAndFile, string outputFolder, string password, bool deleteZipFile)
+        public void UnZipArchive(string zipPathAndFile, string outputFolder, string? password, bool deleteZipFile)
         {
             this.UnZipArchiveFiles(zipPathAndFile, outputFolder, password, deleteZipFile, null);
         }

@@ -12,6 +12,8 @@
     <Authors>Erik Nagel</Authors>
     <Company>NetEti</Company>
     <Description>$(AssemblyName) - Demoprogramm</Description>
+    <AssemblyVersion>7.0.1.0</AssemblyVersion>
+    <FileVersion>7.0.1.0</FileVersion>
   </PropertyGroup>
 
   <ItemGroup>
