@@ -40,9 +40,9 @@ namespace NetEti.FileTools.Zip
         /// <returns>True, wenn es sich um ein Zip-Archiv handelt</returns>
         public bool IsZip(string zipPathAndFile)
         {
-            using (ZipInputStream zipIn = new ZipInputStream(File.OpenRead(zipPathAndFile)))
+            try
             {
-                try
+                using (ZipInputStream zipIn = new ZipInputStream(File.OpenRead(zipPathAndFile)))
                 {
                     if (File.Exists(zipPathAndFile))
                     {
@@ -52,8 +52,8 @@ namespace NetEti.FileTools.Zip
                         }
                     }
                 }
-                catch { }
             }
+            catch { }
             return false;
         }
 
