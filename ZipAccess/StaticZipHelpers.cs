@@ -28,7 +28,7 @@ namespace NetEti.FileTools.Zip
         /// <summary>
         /// Konvertiert ein DateTimeOffset nach DateTime.
         /// </summary>
-        /// <param name="dateTime"></param>
+        /// <param name="dateTime">Ein Zeitpunkt als DateTimeOffset.</param>
         /// <returns>Lokale DateTime</returns>
         public static DateTime ConvertFromDateTimeOffset(DateTimeOffset dateTime)
         {
