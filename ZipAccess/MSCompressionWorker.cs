@@ -1,9 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
+﻿using System.ComponentModel;
 using System.IO.Compression;
-using System.IO;
-using System.Linq;
 
 namespace NetEti.FileTools.Zip
 {

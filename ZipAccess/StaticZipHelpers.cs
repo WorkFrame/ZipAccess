@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.IO;
-using System.Linq;
-
-namespace NetEti.FileTools.Zip
+﻿namespace NetEti.FileTools.Zip
 {
     /// <summary>
     /// Stellt ein paar allgemeine Hilfsroutinen für alle beteiligten Klassen zur Verfügung.

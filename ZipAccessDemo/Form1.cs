@@ -1,10 +1,5 @@
-﻿using System;
-using System.ComponentModel;
-using System.Windows.Forms;
+﻿using System.ComponentModel;
 using NetEti.FileTools.Zip;
-using System.Collections.Generic;
-using System.Linq;
-using System.IO;
 
 namespace NetEti.DemoApplications
 {

@@ -1,7 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Threading;
+﻿using System.ComponentModel;
 
 namespace NetEti.FileTools.Zip
 {

@@ -1,9 +1,5 @@
 ﻿using ICSharpCode.SharpZipLib.Zip;
-using System;
-using System.Collections.Generic;
 using System.ComponentModel;
-using System.IO;
-using System.Linq;
 
 namespace NetEti.FileTools.Zip
 {

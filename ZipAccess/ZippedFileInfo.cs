@@ -1,6 +1,4 @@
-﻿using System;
-
-namespace NetEti.FileTools.Zip
+﻿namespace NetEti.FileTools.Zip
 {
     /// <summary>
     /// Informationen für eine Datei im Archiv:

@@ -1,7 +1,4 @@
-﻿using System;
-using System.Windows.Forms;
-
-namespace NetEti.DemoApplications
+﻿namespace NetEti.DemoApplications
 {
     static class Program
     {
